@@ -1,0 +1,35 @@
+name: Keploy API Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start server
+        run: |
+          nohup npm start &
+          sleep 10  # Wait for server to boot
+
+      - name: Download Keploy CLI
+        run: |
+          curl -L https://github.com/keploy/keploy/releases/download/v2.6.15/keploy-linux-amd64 -o keploy
+          chmod +x keploy
+
+      - name: Run Keploy tests
+        run: ./keploy test --proxy-port 5000

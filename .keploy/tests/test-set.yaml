@@ -1,0 +1,17 @@
+name: Test Get All Tasks
+req:
+  method: GET
+  url: /api/tasks
+  headers:
+    Content-Type: application/json
+res:
+  status_code: 200
+- name: Test Create Task
+  req:
+    method: POST
+    url: /api/tasks
+    headers:
+      Content-Type: application/json
+    body: '{"title":"TestTask","description":"Via CI"}'
+  res:
+    status_code: 201
