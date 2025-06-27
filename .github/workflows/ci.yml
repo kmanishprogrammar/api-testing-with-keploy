@@ -31,5 +31,6 @@ jobs:
           curl -L https://github.com/keploy/keploy/releases/download/v2.6.15/keploy-linux-amd64 -o keploy
           chmod +x keploy
 
-      - name: Run Keploy tests
-        run: ./keploy test --proxy-port 5000
+      - name: Run Keploy Tests
+        run: npx keploy test --proxy-port 5000
+
