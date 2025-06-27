@@ -91,9 +91,6 @@ GitHub Actions is used to:
 - Run `keploy test-suite`
 - Verify all tests pass in CI
 
-### 🖼️ Image 4: GitHub Actions Console Output
-
-![GitHub Actions](images/github-actions.png)
 
 ---
 
@@ -115,10 +112,6 @@ task-manager-api-tests/
 ├── server.js
 └── README.md
 ```
-
-### 🖼️ Image 5: Test Files in Ubuntu
-
-![Test Folder](images/test-folder.png)
 
 ---
 
