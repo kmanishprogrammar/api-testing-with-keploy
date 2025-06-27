@@ -20,6 +20,6 @@
     "jest": "^30.0.2",
     "mongodb-memory-server": "^10.1.4",
     "supertest": "^7.1.1",
-    "keploy": "^0.1.6"
+    "keploy": "keploy/keploy-node"
   }
 }
