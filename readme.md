@@ -1,74 +1,27 @@
-# 🚀 Task Manager API Server (Node.js + MongoDB + Express)
+# 🧠 Task Manager API
 
-This is a custom API server built using **Node.js**, **Express**, and **MongoDB Atlas** to manage a task list with full **CRUD operations**. It also includes a simple **frontend web app** and was tested using **Postman**.
-
----
-
-## 📸 Screenshots
-
-### 🔹 Postman API Testing
-
-1. **Create Task (POST)**
-2. **Get All Tasks (GET)**
-3. **Update Task (PUT)**
-4. **Delete Task (DELETE)**
-
-<p align="center">
-  <img src="screenshots/image1.png" width="400" />
-  <img src="screenshots/image2.png" width="400" />
-  <img src="screenshots/image3.png" width="400" />
-  <img src="screenshots/image4.png" width="400" />
-</p>
+A RESTful API built using **Node.js**, **Express**, and **MongoDB**, integrated with **Keploy** for automated API testing and **GitHub Actions** for CI/CD.
 
 ---
 
-### 🔹 Frontend Web Interface
+## 📌 Features
 
-1. Add new task  
-2. View and update tasks  
-3. Delete tasks
-
-<p align="center">
-  <img src="screenshots/image5.png" width="400" />
-  <img src="screenshots/image6.png" width="400" />
-  <img src="screenshots/image7.png" width="400" />
-  <img src="screenshots/image8.png" width="400" />
-</p>
+- Task creation, update, delete, and view
+- MongoDB-backed persistence
+- API test recording and replay via Keploy
+- CI automation using GitHub Actions
+- Docker-ready (optional)
 
 ---
 
-## 📦 Technologies Used
+## 🛠️ Setup Instructions
 
-- 🟢 Node.js  
-- ⚡ Express.js  
-- 🌿 MongoDB Atlas (Cloud DB)  
-- 🧠 Mongoose (ODM)  
-- 📮 Postman (API testing)  
-- 💻 HTML/CSS/JS (Frontend)
-
----
-
-## 🔧 Features
-
-- ✅ Create a new task  
-- ✅ View all tasks  
-- ✅ Update any task (title, description, status)  
-- ✅ Delete a task  
-- ✅ Simple frontend interface to perform all operations  
-- ✅ Tested via Postman
-
----
-
-## 🚀 How to Run the Project Locally
-
-### 1. Clone the Repository
+### 1. Clone Repository
 
 ```bash
-git clone https://github.com/kmanishprogrammar/task-manager-api.git
-cd custom-api-server
+git clone https://github.com/kmanishprogrammar/task-manager-api-tests.git
+cd task-manager-api-tests
 ```
-
----
 
 ### 2. Install Dependencies
 
@@ -76,80 +29,135 @@ cd custom-api-server
 npm install
 ```
 
----
+### 3. Setup Environment
 
-### 3. Set Up Environment Variables
+Create a `.env` file:
 
-Create a `.env` file in the root directory and add the following content:
-
-```env
+```
 PORT=5000
-MONGO_URI=mongodb+srv://admin:<your_password>@cluster0.mongodb.net/taskdb?retryWrites=true&w=majority
+MONGODB_URI=mongodb://localhost:27017/taskdb
 ```
 
-> Replace `<your_password>` with your actual MongoDB Atlas password.  
-> Ensure your IP is whitelisted in MongoDB Atlas (0.0.0.0/0 for dev access).
-
 ---
 
-### 4. Start the Server
+## 🚀 Start the API Server
 
 ```bash
-node server.js
+npm start
 ```
 
-The backend will start running at:  
-**http://localhost:5000**
+You should see the app running at: `http://localhost:5000`
+
 
 ---
 
-### 5. Open the Frontend
+## 🧪 Record API Tests with Keploy
 
-Visit:  
-**http://localhost:5000** in your browser to open the frontend.
+### 1. Install Keploy
 
-You can now:
-- ➕ Add new tasks  
-- 👀 View all tasks  
-- ✏️ Update task title/description/status  
-- ❌ Delete tasks
+```bash
+curl --silent -L https://keploy.io/ent/install.sh | bash
+```
+
+### 2. Record Tests
+
+```bash
+keploy record -c "npm start"
+```
+
+Now hit some endpoints using Postman or curl to generate test data.
 
 ---
 
-## 📂 Project Structure
+## 🔁 Replay API Tests with Keploy
+
+Make sure the server is **not already running**, then run:
+
+```bash
+keploy test -c "npm start" --delay 5
+```
+
+Keploy will replay all tests saved in the `keploy/` directory.
+
+
+---
+
+## ⚙️ GitHub Actions CI/CD
+
+GitHub Actions is used to:
+
+- Install dependencies
+- Start the API server
+- Run `keploy test-suite`
+- Verify all tests pass in CI
+
+### 🖼️ Image 4: GitHub Actions Console Output
+
+![GitHub Actions](images/github-actions.png)
+
+---
+
+## 📁 Folder Structure
 
 ```
-custom-api-server/
+task-manager-api-tests/
+├── controllers/
+├── models/
+├── routes/
+├── keploy/               # Keploy tests stored here
+│   ├── test-set-1/
+│   │   ├── test1.yaml
+│   │   └── ...
+├── .github/
+│   └── workflows/
+│       └── ci.yml
 ├── .env
 ├── server.js
-├── models/
-│   └── Task.js
-├── routes/
-│   └── taskRoutes.js
-├── public/
-│   ├── index.html
-│   ├── script.js
-│   └── style.css
-├── screenshots/
-│   ├── image1.png (Postman Create)
-│   ├── image2.png (Postman Read)
-│   ├── image3.png (Postman Update)
-│   ├── image4.png (Postman Delete)
-│   ├── image5.png (Frontend Add)
-│   ├── image6.png (Frontend View)
-│   ├── image7.png (Frontend Edit)
-│   └── image8.png (Frontend Delete)
-├── README.md
+└── README.md
+```
+
+### 🖼️ Image 5: Test Files in Ubuntu
+
+![Test Folder](images/test-folder.png)
+
+---
+
+## 🐳 Docker Support (Optional)
+
+```bash
+docker build -t task-api .
+docker run -p 5000:5000 task-api
 ```
 
 ---
 
-## ✍️ Author
+## ✅ Note to Evaluator
 
-**Manish Kumar**  
-🎓 Final Year IT Student  
-🔥 Custom API Server Project  
-📮 Tested using Postman + Fully Functional Frontend
+- ✔ All Keploy tests are inside `keploy/`
+- ✔ GitHub Actions pipeline successfully executes tests
+- ✔ Screenshots included for all major steps
+- ✔ Tests work both locally and in CI
+- ✔ Repo is clean and production-ready
 
 ---
 
+## 👤 Author
+
+**Manish Kumar**  
+GitHub: [@kmanishprogrammar](https://github.com/kmanishprogrammar)
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 📷 Screenshot Index
+
+- `images/server-running.png` – API server start on Ubuntu
+- `images/keploy-record.png` – Recording testcases
+- `images/keploy-test.png` – Replaying testcases
+- `images/github-actions.png` – GitHub Actions run
+- `images/test-folder.png` – Test files in folder view
