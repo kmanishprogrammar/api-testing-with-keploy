@@ -149,8 +149,29 @@ This project is licensed under the MIT License.
 
 ## 📷 Screenshot Index
 
-- `images/server-running.png` – API server start on Ubuntu
-- `images/keploy-record.png` – Recording testcases
-- `images/keploy-test.png` – Replaying testcases
-- `images/github-actions.png` – GitHub Actions run
-- `images/test-folder.png` – Test files in folder view
+<div align="center">
+
+<table>
+  <tr>
+    <td><img src="screenshots/image11.png" width="400"/></td>
+    <td><img src="screenshots/image12.png" width="400"/></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/image13.png" width="400"/></td>
+    <td><img src="screenshots/image14.png" width="400"/></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/image15.png" width="400"/></td>
+    <td><img src="screenshots/image16.png" width="400"/></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/image17.png" width="400"/></td>
+    <td><img src="screenshots/image18.png" width="400"/></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/image19.png" width="400"/></td>
+    <td><img src="screenshots/image20.png" width="400"/></td>
+  </tr>
+</table>
+
+</div>
